@@ -87,8 +87,14 @@ struct ContentView: View {
 
             Spacer()
 
-            Button("Play") {
-                Player.shared.play(category: category, options: selected)
+            HStack {
+                Button("Play") {
+                    Player.shared.play(category: category, options: selected)
+                }
+
+                Button("Speak") {
+                    Synthesizer.shared.play(category: category, options: selected)
+                }
             }
         }
         .padding()
@@ -193,6 +199,7 @@ final class Player: NSObject, AVAudioPlayerDelegate {
         do {
             try session.setCategory(category, mode: .default, options: options)
             try session.setActive(true)
+            player?.volume = 1.0
             player?.play()
         } catch {
             print("Failed to start playing audio", error)
@@ -200,6 +207,49 @@ final class Player: NSObject, AVAudioPlayerDelegate {
     }
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        do {
+            try session.setActive(false, options: [.notifyOthersOnDeactivation])
+        } catch {
+            print("Failed to deactivate audio session", error)
+        }
+    }
+}
+
+final class Synthesizer: NSObject, AVSpeechSynthesizerDelegate {
+
+    static let shared = Synthesizer()
+
+    private lazy var synthesizer: AVSpeechSynthesizer = {
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.delegate = self
+        return synthesizer
+    }()
+
+    private let session: AVAudioSession = .sharedInstance()
+
+    private override init() {
+        super.init()
+    }
+
+    func play(category: AVAudioSession.Category, options: AVAudioSession.CategoryOptions) {
+        do {
+            try session.setCategory(category, mode: .default, options: options)
+            try session.setActive(true)
+            synthesizer.speak(AVSpeechUtterance(string: "In 450 feet, use any lane to turn left on Evergreen Terrace"))
+        } catch {
+            print("Failed to start playing audio", error)
+        }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        do {
+            try session.setActive(false, options: [.notifyOthersOnDeactivation])
+        } catch {
+            print("Failed to deactivate audio session", error)
+        }
+    }
+
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         do {
             try session.setActive(false, options: [.notifyOthersOnDeactivation])
         } catch {
