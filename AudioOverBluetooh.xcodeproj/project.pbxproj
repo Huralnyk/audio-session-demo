@@ -17,6 +17,8 @@
 		A940FD42271820F1009FDE14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A940FD18271820EF009FDE14 /* ContentView.swift */; };
 		A940FD43271820F1009FDE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A940FD19271820F0009FDE14 /* Assets.xcassets */; };
 		A940FD44271820F1009FDE14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A940FD19271820F0009FDE14 /* Assets.xcassets */; };
+		A940FD57271827A2009FDE14 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A940FD56271827A2009FDE14 /* example.mp3 */; };
+		A940FD58271827A2009FDE14 /* example.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A940FD56271827A2009FDE14 /* example.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		A940FD37271820F1009FDE14 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A940FD3B271820F1009FDE14 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		A940FD3D271820F1009FDE14 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		A940FD56271827A2009FDE14 /* example.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = example.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				A940FD17271820EF009FDE14 /* AudioOverBluetoohApp.swift */,
+				A940FD56271827A2009FDE14 /* example.mp3 */,
 				A940FD18271820EF009FDE14 /* ContentView.swift */,
 				A940FD19271820F0009FDE14 /* Assets.xcassets */,
 			);
@@ -267,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A940FD43271820F1009FDE14 /* Assets.xcassets in Resources */,
+				A940FD57271827A2009FDE14 /* example.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A940FD44271820F1009FDE14 /* Assets.xcassets in Resources */,
+				A940FD58271827A2009FDE14 /* example.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
